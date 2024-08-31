@@ -6,12 +6,10 @@ export default function ProductCard(props){
     return (
         <View style={styles.card}>
           <ScrollView >
-            <Image
-              source={{ uri: props.image }}
-              style={styles.image}
-            />
+            <Image style={styles.image} source={{ uri: props.pic }} />
             <Text style={styles.productName}>{props.name}</Text>
-            <Text style={styles.Price}>${props.price}</Text>
+            <Text style={styles.descript}>จำนวนคงเหลือ {props.stock}</Text>
+            <Text style={styles.price}>${props.price}</Text>
           </ScrollView>
         </View>
       );
