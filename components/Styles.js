@@ -3,16 +3,17 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     card: {
         backgroundColor: '#fff',
-        width: 150,
-        borderRadius: 10,
+        width: 'auto',
+        borderRadius: 20,
         padding: 15,
-        marginVertical: 10,
-        alignItems: 'left',
+        marginVertical: 15,
+        alignItems: 'flex-start',
     },
     image: {
         width:100,
         height: 90,
         marginBottom: 10,
+        alignSelf: 'center',
     },
     productName: {
         fontSize: 20,
@@ -20,8 +21,12 @@ const styles = StyleSheet.create({
     },
     price: {
         fontSize: 16,
-        cplor: '#888',
+        color: '#FF0000',
     },
+    descript: {
+        fontSize: 16,
+        color: '#768A96'
+    }
 });
 
 export default styles;
