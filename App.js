@@ -1,5 +1,6 @@
 import { ScrollView, View, StyleSheet } from 'react-native';
 import ProductCard from './components/ProductCard';
+import styles from './components/Styles';
 
 export default function App() {
   
@@ -53,12 +54,3 @@ export default function App() {
     </ScrollView>
   );
 }
-
-
-
-const styles=StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff3e0',
-  },
-});

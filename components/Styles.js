@@ -26,7 +26,11 @@ const styles = StyleSheet.create({
     descript: {
         fontSize: 16,
         color: '#768A96'
-    }
+    },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff3e0',
+    },
 });
 
 export default styles;
