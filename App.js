@@ -11,11 +11,11 @@ export default function App() {
   useEffect(() => {
     async function fetchData() {
     const result = await fetch(
-    'https://fakestoreapi.com/products'
+    'http://it2.sut.ac.th/labexample/product.php?pageno=1'
     );
     const json = await result.json();
-    setData(json);
-    setTempdata(json);
+    setData(json.products);
+    setTempdata(json.products);
     }
     fetchData(); }, []);
 
@@ -38,16 +38,14 @@ export default function App() {
         <Text style={styles.textButton}>IN STOCK</Text>
       </TouchableOpacity>
       <ScrollView style={styles.container}>
-        {data.map((item => (<ProductCard key={item.id} name={item.title} price={item.price} stock="10" cate="gay" pic={item.image} />)))}
+        {data.map((item => (<ProductCard key={item.id} name={item.name} price={item.price} stock={item.stock} cate={item.cate} pic={item.pic} />)))}
       </ScrollView>
     </View>
     
   );
 }
 
-//https://fakestoreapi.com/products
-//{data.map((item => (<ProductCard key={item.id} name={item.title} price={item.price} stock="10" cate="gay" pic={item.image} />)))}
 
-//https://it2.sut.ac.th/labexample/product.php
-//https://it2.sut.ac.th/labexample/product.php?pageno=1
+//http://it2.sut.ac.th/labexample/product.php
+//http://it2.sut.ac.th/labexample/product.php?pageno=1
 //{data.map((item => (<ProductCard key={item.id} name={item.name} price={item.price} stock={item.stock} cate={item.cate} pic={item.pic} />)))}
