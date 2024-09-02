@@ -7,17 +7,24 @@ export default function App() {
   
   const [data, setData] = useState([]);
   const [tempdata, setTempdata] = useState();
+  const [offset, setOffset] = useState(1);
+  const [isListEnd, setIsListEnd] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
     const result = await fetch(
-    'http://it2.sut.ac.th/labexample/product.php?pageno=1'
+    'http://it2.sut.ac.th/labexample/product.php?pageno=' + offset
     );
     const json = await result.json();
-    setData(json.products);
-    setTempdata(json.products);
+    if(json.products.length > 0){
+      setOffset(offset + 1);
+      setData([...data, ...json.products]);
+      setTempdata([...data, ...json.products]);
+    }else{
+      setIsListEnd(true);
     }
-    fetchData(); }, []);
+    }
+    fetchData(); }, [data]);
 
   
 
@@ -46,6 +53,5 @@ export default function App() {
 }
 
 
-//http://it2.sut.ac.th/labexample/product.php
-//http://it2.sut.ac.th/labexample/product.php?pageno=1
-//{data.map((item => (<ProductCard key={item.id} name={item.name} price={item.price} stock={item.stock} cate={item.cate} pic={item.pic} />)))}
+//'http://it2.sut.ac.th/labexample/product.php'
+//'http://it2.sut.ac.th/labexample/product.php?pageno=' + offset
