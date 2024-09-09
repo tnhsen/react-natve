@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 
-
 const styles = StyleSheet.create({
     card: {
         backgroundColor: '#fff',
@@ -39,6 +38,7 @@ const styles = StyleSheet.create({
     },
     textButton: {
         alignSelf: 'center',
+        justifyContent: 'center',
         fontSize: 20,
     },
     view: {
@@ -51,15 +51,82 @@ const styles = StyleSheet.create({
         flex: 0.1,
     },
     middleView: {
-        flex: 0.65,
-    },
-    bottomView: {
-        flex: 0.25,
+        flex: 0.9,
     },
     textList: {
         fontSize: 16,
         justifyContent: 'center',
         alignSelf: 'center',
+    },
+    LoginScreen: {
+        backgroundColor: '#FFD3B5',
+        flex: 1,
+    },
+    TextLogin: {
+        fontSize: 50,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        marginVertical: 50,
+    },
+    input: {
+        height: 40,
+        width: 350,
+        borderColor: 'gray',
+        borderWidth: 1,
+        marginBottom: 16,
+        paddingHorizontal: 8,
+        alignSelf: 'center'
+    },
+    loginButton: {
+        height: 40,
+        width: 250,
+        backgroundColor: '#F67280',
+        borderColor: 'Gray',
+        borderWidth: 1,
+        marginBottom: 16,
+        paddingHorizontal: 8,
+        alignSelf: 'center',
+        borderRadius: 20,
+    },
+    textButtonLV2: {
+        alignSelf: 'center',
+        justifyContent: 'center',
+        fontSize: 16,
+    },
+    loginButtonLV2: {
+        height: 30,
+        width: 200,
+        backgroundColor: '#C06C84',
+        borderColor: 'Gray',
+        borderWidth: 1,
+        marginBottom: 16,
+        paddingHorizontal: 8,
+        alignSelf: 'center',
+        borderRadius: 20,
+    },
+    cartTop: {
+        flex: 0.1,
+    },
+    cartBottom: {
+        flex: 0.9,
+    },
+    clearButton: {
+        height: 100,
+        backgroundColor: '#00DBFF',
+        textAlign: 'center',
+        justifyContent: 'center',
+    },
+    username: {
+        alignSelf: 'center',
+        justifyContent: 'center',
+        fontSize: 80,
+    },
+    profileImage: {
+        width: 350,
+        height: 350,
+        alignSelf: 'center',
+        justifyContent: 'center',
+        marginVertical: 15,
     },
 });
 
