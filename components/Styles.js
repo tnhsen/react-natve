@@ -29,12 +29,11 @@ const styles = StyleSheet.create({
         color: '#768A96'
     },
     container: {
-        flex: 1,
-        backgroundColor: '#fff3e0',
+        backgroundColor: '#FFD3B5',
     },
     button: {
-        backgroundColor: '#00DBFF',
         height: 50,
+        backgroundColor: '#00DBFF',
         textAlign: 'center',
         justifyContent: 'center',
     },
@@ -44,6 +43,23 @@ const styles = StyleSheet.create({
     },
     view: {
         flex: 1,
+    },
+    list: {
+        backgroundColor: '#FFAAA6',
+    },
+    topView:{
+        flex: 0.1,
+    },
+    middleView: {
+        flex: 0.65,
+    },
+    bottomView: {
+        flex: 0.25,
+    },
+    textList: {
+        fontSize: 16,
+        justifyContent: 'center',
+        alignSelf: 'center',
     },
 });
 
