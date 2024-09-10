@@ -8,16 +8,17 @@ import Profile from './screen/ProfileScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/Ionicons'
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function Home({Navigator}) {
   return (
-  <Tab.Navigator>
-    <Tab.Screen name="Home" options={{ headerShown: false }} component={HomeScreen} />
-    <Tab.Screen name="Cart" options={{ headerShown: false }} component={Cart} />
-    <Tab.Screen name="Profile" options={{ headerShown: false }} component={Profile} />
+  <Tab.Navigator tabBarOptions={{activeTintColor : 'red'}}>
+    <Tab.Screen name="Home" options={{ headerShown: false, tabBarIcon:({color,size})=>(<Icon name="home" color={color} size={size} /> )}} component={HomeScreen} />
+    <Tab.Screen name="Cart" options={{ headerShown: false, tabBarIcon:({color,size})=>(<Icon name="cart" color={color} size={size} /> )  }} component={Cart} />
+    <Tab.Screen name="Profile" options={{ headerShown: false, tabBarIcon:({color,size})=>(<Icon name="person" color={color} size={size} /> ) }} component={Profile} />
   </Tab.Navigator>
   );
 }
