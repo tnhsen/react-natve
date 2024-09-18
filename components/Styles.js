@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         marginVertical: 15,
     },
     image: {
-        width:100,
+        width: 100,
         height: 90,
         marginBottom: 10,
         alignSelf: 'center',
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     list: {
         backgroundColor: '#FFAAA6',
     },
-    topView:{
+    topView: {
         flex: 0.1,
     },
     middleView: {
@@ -122,11 +122,18 @@ const styles = StyleSheet.create({
         fontSize: 80,
     },
     profileImage: {
-        width: 350,
-        height: 350,
-        alignSelf: 'center',
+        width: '100%',
+        height: '100%',
+    },
+    imageContainer: {
+        marginTop: 30,
+        marginBottom: 10,
+        width: 160,
+        height: 160,
+        borderRadius: 75,
+        overflow: 'hidden',
         justifyContent: 'center',
-        marginVertical: 15,
+        alignSelf: 'center',
     },
 });
 
