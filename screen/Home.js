@@ -2,75 +2,39 @@ import { ScrollView,View, Text, TouchableOpacity, SafeAreaView } from 'react-nat
 import ProductCard from '../components/ProductCard';
 import styles from '../components/Styles';
 import { useState, useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../Firebase';
 
-export default function HomeScreen(){
-    const [data, setData] = useState([]);
-    const [tempdata, setTempdata] = useState();
-    const [offset, setOffset] = useState(1);
-    const [isListEnd, setIsListEnd] = useState(false);
-    const [list, setList] = useState([]);
+export default function HomeScreen() {
 
-  useEffect(() => {
-    async function fetchData() {
-    const result = await fetch(
-    'http://it2.sut.ac.th/labexample/product.php?pageno=' + offset
-    );
-    const json = await result.json();
-    if(json.products.length > 0){
-      setOffset(offset + 1);
-      setData([...data, ...json.products]);
-      setTempdata([...data, ...json.products]);
-    }else{
-      setIsListEnd(true);
-    }
-    }
-    fetchData(); }, [data]);
+  const [product, setProduct] = useState([]);
+  const [tempData, setTempData] = useState([]);
 
-  
-
-  function filterItem(val){
-    if(val === 'All'){
-      setData(tempdata);
-    }else if(val === 'INSTOCK'){
-      setData(tempdata.filter((item)=> item.stock > 0))
-    }
-  }
-
- async function storeData(name){
-    try{
-      const res = await AsyncStorage.getItem('item');
-      var proDuctList = [];
-      if(res === undefined || res === null){
-        proDuctList = [name];
-      }else{
-        proDuctList = JSON.parse(res);
-        proDuctList.push(name);
-      }
-      await AsyncStorage.setItem('item', JSON.stringify(proDuctList));
-      alert("บันทึกแล้ว " + name);
-      getData();
-    }catch(e){
-      alert(e)
-    }
-  }
-
-  async function getData(){
+  const getProduct = async () => {
     try {
-      const value = await AsyncStorage.getItem('item');
-      if(value !== null){
-        setList(JSON.parse(value));  
-      }else{
-        setList([]);
-      }
-    } catch(e) {
-      alert(e);
+      const querySnap = await getDocs(collection(db, "products"));
+      let productsTemp = [];
+      querySnap.forEach((doc) => {
+        productsTemp.push({ id: doc.id, ...doc.data() }); 
+      });
+      setProduct(productsTemp);
+      setTempData(productsTemp);
+    } catch (error) {
+      console.error(error);
     }
-  }
+  };
 
   useEffect(() => {
-    getData(); 
-  }, []);
+    getProduct(); 
+  },[]);
+
+  function filterItem(val) {
+    if (val === 'All') {
+      setProduct(tempData);
+    } else if (val === 'IN STOCK') {
+      setProduct(tempData.filter((item) => item.stock > 0));
+    }
+  }
 
   return (
     <SafeAreaView style={styles.view}>
@@ -84,14 +48,11 @@ export default function HomeScreen(){
       </View>
       <View style={styles.middleView}>
         <ScrollView style={styles.container}>
-          {data.map((item => (<TouchableOpacity onPress={() => storeData(item.name)} key={item.id} ><ProductCard name={item.name} price={item.price} stock={item.stock} cate={item.cate} pic={item.pic} /></TouchableOpacity>)))}
+          {product.map((item) => (  
+              <ProductCard key={item.id} id={item.id} name={item.name} price={item.price} stock={item.stock} pic={item.picture} />
+          ))}
         </ScrollView>
       </View>
     </SafeAreaView>
-    
   );
 }
-
-
-//'http://it2.sut.ac.th/labexample/product.php'
-//'http://it2.sut.ac.th/labexample/product.php?pageno=' + offset

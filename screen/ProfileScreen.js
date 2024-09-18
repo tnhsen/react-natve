@@ -2,26 +2,27 @@ import React,{ useState } from "react";
 import { Text, SafeAreaView, TouchableOpacity, Image } from "react-native";
 import styles from "../components/Styles";
 import Icon from 'react-native-vector-icons/Ionicons';
-import { doc, getDoc } from 'firebase/firestore';
+import { signOut } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 import { auth,db } from '../Firebase';
 
-export default async function Profile(){
 
-    const docRef = doc(db, "users", "name");
-    const docSnap = await getDoc(docRef);
-    const [name, setName] = useState('');
+export default function Profile({navigation}){
 
-    if(docSnap.exists()){
-        setName(docSnap.data().key);
-    }else{
-        console.log("No such document!");
+    async function Logout() {
+        await signOut(auth);
+        navigation.reset({index: 0, routes: [{name: 'Login'}]});
     }
+
     return (
     <SafeAreaView style={styles.LoginScreen}>
         <Icon name="person" size={350} style={styles.profileImage} />
-        <Text style={styles.username}>{name}</Text>
+        <Text style={styles.username}>gay</Text>
         <TouchableOpacity style={styles.loginButton}>
             <Text style={styles.textButton}>Change Profile Picture</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.loginButton} onPress={() => Logout()}>
+            <Text style={styles.textButton}>Logout</Text>
         </TouchableOpacity>
     </SafeAreaView>);
 }

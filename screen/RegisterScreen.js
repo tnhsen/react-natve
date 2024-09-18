@@ -24,7 +24,7 @@ export default function RegisterScreen({navigation}){
             });
 
             alert("Register Success!!");
-            navigation.navigate('Home');
+            navigation.reset({index:0, routes:[{name: 'Home'}]});
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
