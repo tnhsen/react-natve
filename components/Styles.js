@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         flex: 0.9,
     },
     textList: {
-        fontSize: 16,
+        fontSize: 20,
         justifyContent: 'center',
         alignSelf: 'center',
     },
@@ -135,6 +135,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignSelf: 'center',
     },
+    cartItem: {
+        backgroundColor : '#fff',
+        padding : 10,
+        marginVertical: 5,
+        height: 70,
+        borderRadius: 20,
+    }
 });
 
 export default styles;
