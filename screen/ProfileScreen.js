@@ -63,7 +63,7 @@ export default function Profile({ navigation }) {
                 {picture ? (
                     <Image key={picture} source={{ uri: picture }} style={styles.profileImage} />
                 ) : (
-                    <Icon name="person" size={350} style={styles.profileImage} />
+                    <Icon name="person" size={150} style={styles.profileIcon} />
                 )}
             </View>
             <Text style={styles.username}>{username}</Text>

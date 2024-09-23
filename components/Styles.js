@@ -124,6 +124,11 @@ const styles = StyleSheet.create({
     profileImage: {
         width: '100%',
         height: '100%',
+        resizeMode:"cover",
+    },
+    profileIcon: {
+        width: 150,
+        height: 150,
     },
     imageContainer: {
         marginTop: 30,
@@ -136,8 +141,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     cartItem: {
-        backgroundColor : '#fff',
-        padding : 10,
+        backgroundColor: '#fff',
+        padding: 10,
         marginVertical: 5,
         height: 70,
         borderRadius: 20,
